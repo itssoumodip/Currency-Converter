@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import InputBox from './InputBox'
+import { InputBox } from './components'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
 import { FiRepeat, FiArrowRight } from 'react-icons/fi' 
 
@@ -67,7 +67,7 @@ function App() {
               />
             </div>
             
-            <div className="relative w-full h-0.5 my-6 bg-white/10">
+            <div className="relative w-full h-0.5 my-6 mt-12 bg-white/10">
               <button
                 type="button"
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white border-2 border-white/30 transition-all duration-300 shadow-lg"
