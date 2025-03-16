@@ -24,10 +24,12 @@ function App() {
   const exchangeRate = currencyInfo[toCurrency] || 0
 
   const swap = () => {
+    
     setFromCurrency(toCurrency)
     setToCurrency(fromCurrency)
     setConvertedAmount(amount)
     setAmount(convertedAmount)
+    
   }
 
   const convert = () => {
@@ -73,7 +75,9 @@ function App() {
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white border-2 border-white/30 transition-all duration-300 shadow-lg"
                 onClick={swap}
               >
-                <FiRepeat size={18} />
+                <FiRepeat 
+                  size={18}
+                />
               </button>
             </div>
             

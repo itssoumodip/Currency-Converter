@@ -104,31 +104,24 @@ function InputBox({
 }
 
 function CurrencyConverter() {
-  const [isRotating, setIsRotating] = useState(false);
-  
   const handleSwap = () => {
 
-    setIsRotating(true);
-    setTimeout(() => {
-      setIsRotating(false);
-    }, 500); 
   };
   
   return (
     <div className="converter-container">
-
       <button 
         onClick={handleSwap}
         className="swap-button bg-blue-600/40 hover:bg-blue-500/60 p-2 rounded-full mx-auto my-4 flex items-center justify-center transition-all duration-200"
       >
         <FiRefreshCw 
           size={24} 
-          className={`text-white transition-transform duration-500 ${isRotating ? 'rotate-180' : ''}`} 
+          className="text-white" 
         />
       </button>
-      
     </div>
   );
 }
 
+export default InputBox;
 export { InputBox, CurrencyConverter }
