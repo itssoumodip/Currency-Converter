@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { InputBox } from './components'
+import InputBox from './inputBox'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
 import { FiRepeat, FiArrowRight } from 'react-icons/fi' 
 

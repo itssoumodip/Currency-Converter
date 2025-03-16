@@ -1,58 +1,44 @@
-import React, {useId} from 'react'
-
+import React from 'react'
+import { FiChevronDown } from 'react-icons/fi'
 function InputBox({
-    label,
-    amount,
-    onAmountChange,
-    onCurrencyChange,
-    currencyOptions = [],
-    selectCurrency,
-    amountDisable = false,
-    currencyDisable = false,
-    className = "",
+  label,
+  amount,
+  onAmountChange,
+  onCurrencyChange,
+  currencyOptions = [],
+  selectCurrency = "USD",
+  amountDisable = false,
+  className = "",
 }) {
-    const amountInputId = useId()
-
-    return (
-        <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
-            <div className="w-1/2">
-                <label htmlFor={amountInputId} className="text-white/50 text-black/40 mb-2 inline-block">
-                    {label}
-                </label>
-                <input
-                    id={amountInputId}
-                    className="outline-none text-white w-full bg-transparent py-1.5"
-                    type="number"
-                    placeholder="Amount"
-                    disabled={amountDisable}
-                    value={amount}
-                    onChange={(e) => 
-                        // // Pass the raw value when empty, otherwise convert to Number
-                        // const value = e.target.value === '' ? '' : Number(e.target.value);
-                        // onAmountChange && onAmountChange(value);
-
-                        onAmountChange && onAmountChange(Number(e.target.value))
-                    }
-                />
-            </div>
-            <div className="w-1/2 flex flex-wrap justify-end text-right">
-                <p className="text-black/40 text-white/50 mb-2 w-full">Currency Type</p>
-                <select
-                    className="rounded-xl px-1 py-1 bg-gray-100 text-black font-small cursor-pointer outline-none"
-                    value={selectCurrency}
-                    onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
-                    disabled={currencyDisable}
-                >
-                    {currencyOptions.map((currency) => (
-                        <option key={currency} 
-                            value={currency}>
-                            {currency}
-                        </option>
-                    ))}
-                </select>
-            </div>
+  return (
+    <div className="flex flex-col">
+      <label className="text-blue-200 mb-2 font-medium">{label}</label>
+      <div className="flex bg-white/20 p-3 rounded-lg border border-white/30">
+        <input
+          type="number"
+          placeholder="Amount"
+          disabled={amountDisable}
+          value={amount}
+          onChange={(e) => onAmountChange && onAmountChange(e.target.value)}
+          className={`w-full bg-transparent outline-none text-white text-lg ${className}`}
+        />
+        <div className="relative">
+          <select
+            value={selectCurrency}
+            onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
+            className="rounded-lg px-2 py-1 bg-blue-600 text-white cursor-pointer outline-none appearance-none pl-4 pr-8"
+          >
+            {currencyOptions.map((currency) => (
+              <option key={currency} value={currency} className="bg-gray-800">
+                {currency.toUpperCase()}
+              </option>
+            ))}
+          </select>
+          <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white pointer-events-none" />
         </div>
-    );
+      </div>
+    </div>
+  )
 }
 
-export default InputBox;
+export default InputBox
